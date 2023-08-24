@@ -1,0 +1,69 @@
+{
+  "consumer": {
+    "name": "consumer"
+  },
+  "interactions": [
+    {
+      "description": "Employee present with given id",
+      "providerStates": [
+        {
+          "name": "Employee present with given id"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/employee/1"
+      },
+      "response": {
+        "body": {
+          "designation": "Software Engineer III",
+          "id": 1,
+          "name": "Arikaran"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$.designation": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.id": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ]
+            },
+            "$.name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-jvm": {
+      "version": "4.2.9"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "demo"
+  }
+}
